@@ -1,0 +1,23 @@
+#format is target-name: target dependencies
+#{-tab-}actions
+
+# All Targets
+all: myShell
+
+# Tool invocations
+# Executable "hello" depends on the files numbers.o and main.o and add.s.
+myShell: task1a.o LineParser.o
+	gcc -g -Wall -o myShell task1a.o LineParser.o
+
+task1a.o: task1a.c
+	gcc -g -Wall -c -o task2a.o task2a.c
+
+LineParser.o: LineParser.c
+	gcc -g -Wall -c -o LineParser.o LineParser.c
+
+#tell make that "clean" is not a file name!
+.PHONY: clean
+
+#Clean the build directory
+clean: 
+	rm -f *.o myShell
